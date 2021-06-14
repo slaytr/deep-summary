@@ -1,7 +1,7 @@
 import six
 import os
 from google.cloud import translate_v2 as translate
-print(os.environ)
+
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'C:\\Users\\Slayt\\Documents\\GoogleCloudPlatformKeys\\deep-summary-service-account.json'
 
 def translate_text(target, text):
@@ -25,7 +25,7 @@ def translate_text(target, text):
     print(u"Detected source language: {}".format(result["detectedSourceLanguage"]))
 
 
-text = "The above code creates a new React component called HelloMessage. This component takes an argument called name which is then passed down to the HTML where it is used as the value for the Hello variable."
+text = "When the form is submitted, if the searchInput field is not empty, the form is reset.\n\nIf the searchInput field is not empty, create a variable called searchInput.\n\nCreate a variable called url and set it equal to a URL with the search term in it."
 target = "mi"
 
 translate_text(target, text)
