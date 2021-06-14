@@ -1,0 +1,43 @@
+https://github.com/Automattic/wp-calypso
+const ActionCard = ( {
+	headerText,
+	mainText,
+	buttonPrimary,
+	buttonText,
+	buttonIcon,
+	buttonTarget,
+	buttonHref,
+	buttonOnClick,
+	children,
+	compact,
+	classNames,
+	buttonDisabled,
+	illustration,
+} ) => (
+	<Card className={ classnames( 'action-card', classNames ) } compact={ compact }>
+		{ illustration && (
+			<img
+				className="action-card__illustration"
+				alt="concierge session signup form header"
+				src={ illustration }
+			/>
+		) }
+		<div className="action-card__main">
+			<h2 className="action-card__heading">{ headerText }</h2>
+			<p>{ mainText }</p>
+		</div>
+		<div className="action-card__button-container">
+			{ children || (
+				<Button
+					primary={ buttonPrimary }
+					href={ buttonHref }
+					target={ buttonTarget }
+					onClick={ buttonOnClick }
+					disabled={ buttonDisabled }
+				>
+					{ buttonText } { buttonIcon && <Gridicon icon={ buttonIcon } /> }
+				</Button>
+			) }
+		</div>
+	</Card>
+);

@@ -1,0 +1,53 @@
+https://github.com/Automattic/wp-calypso
+	renderLogs( actualPage ) {
+		const {
+			applySiteOffset,
+			logs,
+			pageSize,
+			showDateSeparators,
+			translate,
+			userLocale,
+		} = this.props;
+
+		const today = applySiteOffset ? applySiteOffset() : null;
+
+		const getPrimaryCardClassName = ( hasMore, dateLogsLength ) =>
+			hasMore && dateLogsLength === 1
+				? 'activity-card-list__primary-card-with-more'
+				: 'activity-card-list__primary-card';
+
+		const getSecondaryCardClassName = ( hasMore ) =>
+			hasMore
+				? 'activity-card-list__secondary-card-with-more'
+				: 'activity-card-list__secondary-card';
+
+		const dateFormat = userLocale === 'en' ? 'MMM Do' : 'LL';
+
+		return this.splitLogsByDate( logs.slice( ( actualPage - 1 ) * pageSize ) ).map(
+			( { date, logs: dateLogs, hasMore }, index ) => (
+				<div key={ `activity-card-list__date-group-${ index }` }>
+					{ showDateSeparators && (
+						<div className="activity-card-list__date-group-date">
+							{ date &&
+								( today?.isSame( date, 'day' )
+									? translate( 'Today' )
+									: date.format( dateFormat ) ) }
+						</div>
+					) }
+					<div className="activity-card-list__date-group-content">
+						{ dateLogs.map( ( activity ) => (
+							<ActivityCard
+								activity={ activity }
+								className={
+									isActivityBackup( activity )
+										? getPrimaryCardClassName( hasMore, dateLogs.length )
+										: getSecondaryCardClassName( hasMore )
+								}
+								key={ activity.activityId }
+							/>
+						) ) }
+					</div>
+				</div>
+			)
+		);
+	}
