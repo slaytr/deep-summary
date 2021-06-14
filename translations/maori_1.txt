@@ -1,0 +1,1 @@
+Ko te waehere o runga ake nei ka hanga i tetahi waahanga React hou e kiia ana ko HelloMessage. Ko tenei waahanga he tohenga e kiia ana ko te ingoa ka tukuna ki te HTML ka whakamahia hei uara mo te taurangi Hello.

@@ -1,0 +1,1 @@
+The above code creates a new React component called HelloMessage. This component takes an argument called name which is then passed down to the HTML where it is used as the value for the Hello variable.
