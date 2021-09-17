@@ -1,7 +1,7 @@
 import os
 import openai
 
-openai.api_key = "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"
+openai.api_key = "<api key here>"
 
 response = openai.Completion.create(
   engine="davinci",

@@ -2,7 +2,7 @@ import six
 import os
 from google.cloud import translate_v2 as translate
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'C:\\Users\\Slayt\\Documents\\GoogleCloudPlatformKeys\\deep-summary-service-account.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '<replace this with url of credentials file>'
 
 def translate_text(target, text):
     """Translates text into the target language.
@@ -23,7 +23,6 @@ def translate_text(target, text):
     print(u"Text: {}".format(result["input"]))
     print(u"Translation: {}".format(result["translatedText"]))
     print(u"Detected source language: {}".format(result["detectedSourceLanguage"]))
-
 
 text = "When the form is submitted, if the searchInput field is not empty, the form is reset.\n\nIf the searchInput field is not empty, create a variable called searchInput.\n\nCreate a variable called url and set it equal to a URL with the search term in it."
 target = "mi"
